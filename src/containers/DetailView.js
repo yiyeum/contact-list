@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { getListById } from '../actions/contactDataActions';
 const GOOGLE_MAP_API = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDWVxKNkVC-NVXNtu0dIcIaZ3QBGL8VxJg';
@@ -124,6 +125,10 @@ class DetailView extends Component {
         );
     }
 }
+
+DetailView.propTypes = {
+    selectedList: PropTypes.object
+};
 
 const mapStateToProps = (state) => ({
     selectedList: state.data.selectedList

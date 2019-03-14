@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 const ResultMessage = ({ message }) => {
     return (
@@ -7,5 +8,9 @@ const ResultMessage = ({ message }) => {
         </p>
     );
 }
+
+ResultMessage.propTypes = {
+    message: PropTypes.string
+};
 
 export default ResultMessage;

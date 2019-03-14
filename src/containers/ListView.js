@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import Search from '../components/Search';
 import ListTable from '../components/ListTable';
@@ -109,7 +110,7 @@ class ListView extends Component {
         const { lists, error } = this.props;
         const { searchResult, resultMessage } = this.state;
         const data = (this.props.match.path === '/search/:searchTerm') ? searchResult : lists;
-        if(error.status) {
+        if (error.status) {
             return (
                 <p className="error-message">{error.message}</p>
             )
@@ -122,17 +123,22 @@ class ListView extends Component {
                     setResultSearch={this.setResultSearch}
                     searchByEnter={this.searchByEnter}
                 />
-                <ResultMessage 
-                    message={resultMessage} 
+                <ResultMessage
+                    message={resultMessage}
                 />
-                <ListTable 
-                    contactList={data} 
-                    directToDetailView={this.directToDetailView} 
+                <ListTable
+                    contactList={data}
+                    directToDetailView={this.directToDetailView}
                 />
             </div>
         );
     }
 }
+
+ListView.propTypes = {
+    lists: PropTypes.array,
+    error: PropTypes.object
+};
 
 const mapStateToProps = (state) => ({
     lists: state.data.lists,
