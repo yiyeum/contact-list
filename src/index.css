@@ -1,14 +1,189 @@
+/* 
+  CSS RESET
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
 body {
-  margin: 0;
-  padding: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
+  font-family: 'Roboto', sans-serif;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+
+/* Search component */
+.wrapper {
+  padding: 9% 5%;
+}
+
+.search-wrapper {
+  text-align: center;
+}
+
+.search-input {
+  vertical-align: middle !important;
+  color: #3e3e3e;
+}
+
+button.search-btn {
+  border: 0;
+  padding: 7px 16px;
+  background-color: #0FCEB8;
+  color: #ffffff;
+  font-size: 17px;
+  letter-spacing: .5px;
+  margin-left: 1%;
+  transition: .2s;
+}
+
+button.search-btn:hover {
+  background-color: #0ab39f;
+}
+
+button.search-btn:focus {
+  outline: 0;
+}
+
+/* List Table component */
+.list-table-wrapper {
+  margin-top: 10%;
+}
+
+.list-table thead {
+  background-color: #efefef;
+}
+
+.list-table thead tr th {
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+  color: #6d6d6d;
+}
+
+.list-table tbody tr td,
+.table-mobile tbody tr td,
+.table-mobile tbody tr th {
+  text-align: center;
+  color: #3e3e3e;
+  font-size: 14px;
+}
+
+button.view-btn {
+  border: 0;
+  padding: 8px 23px;  
+  background-color: #0FCEB8;
+  color: #ffffff;
+  font-size: 12px;
+  transition: .2s;
+}
+
+button.view-btn:hover {
+  background-color: #0ab39f;
+}
+
+button.view-btn:focus {
+  outline: 0;
+}
+
+.table-mobile {
+  display: none !important;
+}
+
+.table-mobile tbody th {
+  background-color: #efefef;
+  color: #6d6d6d !important;
+  font-weight: bold;
+  width: 45%;
+}
+
+@media screen and (max-width: 768px) {
+  .table-desktop {
+    display: none !important;
+  }
+  .table-mobile {
+    display: table !important;
+  }
+  button.view-btn {
+    padding: 10px 16px;
+    font-size: 14px;
+    width: 100%;
+  }
+}
+
+/* Detail View component */
+h1.detail-username {
+  color: #6d6d6d;
+  font-size: 25px;
+}
+
+.detail-title {
+  background-color: #efefef;
+}
+
+.detail-col {
+  text-align: center;
+  padding: 10px;
+  color: #333;
+  vertical-align: middle;
+}
+
+.company-title {
+  margin: 1% 0;
+  font-weight: bold;
+}
+
+.back-btn {
+  border: 0;
+  padding: 10px 16px;
+  background-color: #0FCEB8;
+  color: #ffffff;
+  font-size: 13px;
+  transition: .2s;
+}
+
+button.back-btn:hover {
+  background-color: #0ab39f;
+}
+
+button.back-btn:focus {
+  outline: 0;
 }
