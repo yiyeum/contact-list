@@ -49,6 +49,10 @@ table {
 	border-spacing: 0;
 }
 
+a:hover {
+  text-decoration: none !important;
+}
+
 
 /* Search component */
 .wrapper {
@@ -84,6 +88,12 @@ button.search-btn:focus {
 }
 
 /* List Table component */
+.error-message {
+  text-align: center;
+  margin-top: 10%;
+  color: #ad3c3c;
+}
+
 .list-table-wrapper {
   margin-top: 5%;
 }
@@ -165,6 +175,17 @@ h1.detail-username {
   background-color: #efefef;
 }
 
+@media screen and (max-width: 756px){
+  .title-responsive {
+    text-align: center !important;
+    margin-top: 2%;
+  }
+}
+
+.border-strict div {
+  border-bottom: 0 !important;
+}
+
 .detail-col {
   text-align: center;
   padding: 10px;
@@ -172,6 +193,8 @@ h1.detail-username {
   vertical-align: middle;
   word-wrap: break-word;
   letter-spacing: .3px;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 14px;
 }
 
 .company-title {
