@@ -10,8 +10,8 @@ Please check this [link](http://contact-list-kate.herokuapp.com/) for the live a
 
 ## Run the project
 
-you can run the app with :
-
+Download the project or clone <br />
+`npm install` <br />
 `npm start`
 
 ## Plan
