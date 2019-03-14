@@ -7,6 +7,8 @@ import * as contactDataAction from '../actions/contactDataActions';
 import * as commonAction from '../actions/commonActions';
 
 const CONTACT_API_URL = 'https://jsonplaceholder.typicode.com/users';
+const GOOGLE_MAP_API = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDWVxKNkVC-NVXNtu0dIcIaZ3QBGL8VxJg';
+
 function* getLists() {
     try {
         const { data } = yield call(axios.get, CONTACT_API_URL);
@@ -27,7 +29,9 @@ function* getListById({ id }) {
     try {
         const { data } = yield call(axios.get, `${CONTACT_API_URL}/${id}`);
         if (data) {
-            yield put(contactDataAction.gotListById(data));
+            const iframeSrc = `${GOOGLE_MAP_API}&q=${data.address.geo.lat},${data.address.geo.lng}`;
+            const dataWithMapUrl = ({ mapUrl: iframeSrc, ...data });
+            yield put(contactDataAction.gotListById(dataWithMapUrl));
             yield put(commonAction.clearError());
         }
     } catch (err) {

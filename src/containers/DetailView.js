@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { getListById } from '../actions/contactDataActions';
-const GOOGLE_MAP_API = 'https://www.google.com/maps/embed/v1/place?key=AIzaSyDWVxKNkVC-NVXNtu0dIcIaZ3QBGL8VxJg';
 
 class DetailView extends Component {
     constructor(props) {
@@ -13,13 +12,15 @@ class DetailView extends Component {
         this.props.getListById(this.state.id);
     }
 
+    /**
+     * Navigate to the main page
+     */
     directToList = () => {
         this.props.history.push('/');
     }
 
     render() {
         const { selectedList } = this.props;
-        const iframeSrc = `${GOOGLE_MAP_API}&q=${selectedList.address.geo.lat},${selectedList.address.geo.lng}`;
         const detailTitleClass = "col-6 col-sm-6 col-md-3 col-lg-2 detail-title detail-col";
         const detailDataClass = "col-6 col-sm-6 col-md-3 col-lg-2 detail-data detail-col";
 
@@ -94,7 +95,7 @@ class DetailView extends Component {
                         title="Map by contact list address"
                         style={{ width: '100%', minHeight: '300px' }}
                         frameBorder="0"
-                        src={iframeSrc}
+                        src={selectedList.mapUrl}
                     />
                 </div>
 
@@ -103,13 +104,13 @@ class DetailView extends Component {
                     <div className="row align-items-center border-strict">
                         <div className={detailTitleClass}>
                             Name
-                    </div>
+                        </div>
                         <div className={detailDataClass}>
                             {selectedList.company.name}
                         </div>
                         <div className={detailTitleClass}>
                             Phrase
-                    </div>
+                        </div>
                         <div className={detailDataClass}>
                             {selectedList.company.catchPhrase}
                         </div>
