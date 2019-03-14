@@ -106,9 +106,14 @@ class ListView extends Component {
     }
 
     render() {
-        const { lists } = this.props;
+        const { lists, error } = this.props;
         const { searchResult, resultMessage } = this.state;
-        const data = (this.props.match.path === '/search/:keyword') ? searchResult : lists;
+        const data = (this.props.match.path === '/search/:searchTerm') ? searchResult : lists;
+        if(error.status) {
+            return (
+                <p className="error-message">{error.message}</p>
+            )
+        }
         return (
             <div className="container wrapper">
                 <Search
@@ -130,7 +135,8 @@ class ListView extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    lists: state.data.lists
+    lists: state.data.lists,
+    error: state.common.error
 })
 
 const mapDispatchToProps = (dispatch) => ({
