@@ -24,7 +24,13 @@ const ListTable = ({ contactList, directToDetailView }) => {
                                 <TableCell>{list.id}</TableCell>
                                 <TableCell>{list.name.split(' ')[0]}</TableCell>
                                 <TableCell>{list.name.split(' ')[1]}</TableCell>
-                                <TableCell><button className="view-btn" onClick={() => directToDetailView(list.id)}>View</button></TableCell>
+                                <TableCell>
+                                    <button
+                                        className="view-btn"
+                                        onClick={() => directToDetailView(list.id)}
+                                    >View
+                                    </button>
+                                </TableCell>
                             </TableRow>)
                     }
 
@@ -47,7 +53,12 @@ const ListTable = ({ contactList, directToDetailView }) => {
                                 <TableCell>{list.name.split(' ')[1]}</TableCell>
                             </TableRow>
                             <TableRow>
-                                <TableCell colSpan="2" style={{ padding: 0 }}><button className="view-btn" onClick={() => directToDetailView(list.id)}>View</button></TableCell>
+                                <TableCell colSpan="2" style={{ padding: 0 }}>
+                                    <button
+                                        className="view-btn"
+                                        onClick={() => directToDetailView(list.id)}>View
+                                    </button>
+                                </TableCell>
                             </TableRow>
                         </TableBody>)
                 }
