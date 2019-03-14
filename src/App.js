@@ -9,6 +9,7 @@ class App extends Component {
       <div className="App">
        <Switch>
           <Route exact path="/" component={ListView} />
+          <Route exact path="/search/:searchTerm" component={ListView} />
           <Route exact path="/contacts/:id" component={DetailView} />
         </Switch>
       </div>

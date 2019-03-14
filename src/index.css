@@ -85,7 +85,7 @@ button.search-btn:focus {
 
 /* List Table component */
 .list-table-wrapper {
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .list-table thead {
@@ -149,6 +149,12 @@ button.view-btn:focus {
   }
 }
 
+p.list-result-number {
+  text-align: center;
+  margin-top: 5%;
+  color: #6d6d6d;
+}
+
 /* Detail View component */
 h1.detail-username {
   color: #6d6d6d;
@@ -162,12 +168,14 @@ h1.detail-username {
 .detail-col {
   text-align: center;
   padding: 10px;
-  color: #333;
+  color: #565656;
   vertical-align: middle;
+  word-wrap: break-word;
+  letter-spacing: .3px;
 }
 
 .company-title {
-  margin: 1% 0;
+  margin: 1% 0 1% -14px;
   font-weight: bold;
 }
 
