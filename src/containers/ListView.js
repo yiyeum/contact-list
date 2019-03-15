@@ -10,7 +10,7 @@ class ListView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchInput: (this.props.match.path === '/') ? '' : this.props.match.params.searchTerm,
+            searchInput: '',
             searchResult: [],
             resultMessage: ''
         }
@@ -35,7 +35,6 @@ class ListView extends Component {
             this.setState({ resultMessage: '' });
             this.props.history.push('/');
         }
-        (this.state.searchResult.length === 0 && this.state.searchInput !== '') && this.updateSearchResult();
     }
 
     /**
@@ -72,18 +71,10 @@ class ListView extends Component {
         const { searchInput } = this.state;
         if (searchInput.trim().length > 0) {
             this.props.history.push(`/search/${searchInput}`);
-            this.updateSearchResult();
+            this.setState({ searchResult: this.searchKeyword() }, this.setResultMessage);
         } else {
             this.props.history.push('/');
         }
-    }
-
-    /**
-     * Update the search result and 
-     * set result message after
-     */
-    updateSearchResult = () => {
-        this.setState({ searchResult: this.searchKeyword() }, this.setResultMessage);
     }
 
     /**
