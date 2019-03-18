@@ -10,8 +10,7 @@ class ListView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            searchInput: '',
-            searchResult: [],
+            searchInput: (this.props.match.path === "/search/:searchTerm") ? this.props.match.params.searchTerm : '',
             resultMessage: ''
         }
         this.props.getLists();
@@ -23,6 +22,7 @@ class ListView extends Component {
      */
     componentDidMount() {
         window.addEventListener('keypress', this.searchByEnter);
+
     }
 
     /**
@@ -71,7 +71,6 @@ class ListView extends Component {
         const { searchInput } = this.state;
         if (searchInput.trim().length > 0) {
             this.props.history.push(`/search/${searchInput}`);
-            this.setState({ searchResult: this.searchKeyword() }, this.setResultMessage);
         } else {
             this.props.history.push('/');
         }
@@ -81,11 +80,11 @@ class ListView extends Component {
      * Update the result message based on 
      * the number of result lists
      */
-    setResultMessage = () => {
-        if (this.state.searchResult.length > 1) {
-            this.setState({ resultMessage: `${this.state.searchResult.length} results found` })
+    setResultMessage = (data) => {
+        if (data.length > 1) {
+            return (`${data.length} results found`);
         } else {
-            this.setState({ resultMessage: `${this.state.searchResult.length} result found` })
+            return (`${data.length} result found`);
         }
     }
 
@@ -108,8 +107,7 @@ class ListView extends Component {
 
     render() {
         const { lists, error } = this.props;
-        const { searchResult, resultMessage } = this.state;
-        const data = (this.props.match.path === '/search/:searchTerm') ? searchResult : lists;
+        const data = (this.props.match.path === '/search/:searchTerm') ? this.searchKeyword() : lists;
         if (error.status) {
             return (
                 <p className="error-message">{error.message}</p>
@@ -123,9 +121,13 @@ class ListView extends Component {
                     setResultSearch={this.setResultSearch}
                     searchByEnter={this.searchByEnter}
                 />
-                <ResultMessage
-                    message={resultMessage}
-                />
+                {
+                    this.props.match.path === '/search/:searchTerm'
+                        &&
+                        <ResultMessage
+                            message={this.setResultMessage(data)}
+                        />
+                }
                 <ListTable
                     contactList={data}
                     directToDetailView={this.directToDetailView}
